@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ulfa Damayanti!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffe6f2;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+            background-color: #ffb6c1;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff1493;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #ff69b4;
+            margin-bottom: 20px;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .balloon:before {
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 60px;
+            background-color: #d3d3d3;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .balloon:nth-child(1) {
+            top: 20px;
+            left: 10%;
+            background-color: #ff69b4;
+            animation-delay: 0.5s;
+        }
+
+        .balloon:nth-child(2) {
+            top: 40px;
+            right: 10%;
+            background-color: #ff1493;
+            animation-delay: 1s;
+        }
+
+        .balloon:nth-child(3) {
+            top: 30px;
+            left: 20%;
+            background-color: #ff78a6;
+            animation-delay: 1.5s;
+        }
+
+        .balloon:nth-child(4) {
+            top: 50px;
+            right: 20%;
+            background-color: #ff5a89;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section h2 {
+            color: #ff1493;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .heart {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 100px;
+            color: #ff1493;
+        }
+
+        .heart-1 {
+            top: 10px;
+            right: 10px;
+        }
+
+        .heart-2 {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .memory-card {
+            background-color: #fff5f8;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 150px;
+            background-color: #ffb6c1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .memory-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .memory-info h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #ff1493;
+        }
+
+        .memory-info p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 80%;
+            max-height: 80%;
+            overflow: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #ff1493;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 70vh;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .modal-text {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .wishes {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .wish {
+            background-color: #fff5f8;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .wish p {
+            font-style: italic;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .wish-author {
+            text-align: right;
+            font-weight: bold;
+            color: #ff1493;
+        }
+
+        .btn {
+            background-color: #ff1493;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background-color: #ff69b4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .special-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #ff1493;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .special-button:hover {
+            transform: scale(1.1);
+        }
+
+        .surprise-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 20, 147, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            flex-direction: column;
+            color: white;
+        }
+
+        .surprise-text {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .close-surprise {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #ff69b4;
+            font-size: 0.9rem;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        /* Video section styles */
+        .video-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .birthday-video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .music-btn {
+            background-color: #ff1493;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            background-color: #ff69b4;
+            transform: translateY(-2px);
+        }
+
+        .music-icon {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .modal-content {
+                max-width: 95%;
+            }
+            .birthday-video {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <h1>Happy Birthday Ulfa Damayanti!</h1>
+            <p class="subtitle">Celebrating You Today and Always</p>
+            
+            <!-- Music Player (Hidden) -->
+            <audio id="birthday-music" loop>
+                <source src="https://cdn.jsdelivr.net/gh/soundsfrombeyond/free-sounds/happy_birthday.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            
+            <!-- Music Controls -->
+            <div class="music-controls">
+                <button class="music-btn" id="play-music">
+                    <span class="music-icon">🎵</span> Play Birthday Song
+                </button>
+                <button class="music-btn" id="pause-music" style="display: none;">
+                    <span class="music-icon">⏸️</span> Pause Music
+                </button>
+            </div>
+        </header>
+
+        <div class="section">
+            <div class="heart heart-1">❤</div>
+            <div class="heart heart-2">❤</div>
+            <h2>Our Memories Together</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Click on any memory to view it in detail</p>
+            <div class="gallery">
+                <div class="memory-card" data-memory="1">
+                    <div class="thumbnail">📸</div>
+                    <div class="memory-info">
+                        <h3>First Date</h3>
+                        <p>Remember when we first met?</p>
+                    </div>
+                </div>
+                <div class="memory-card" data-memory="3">
+                    <div class="thumbnail">📸</div>
+                    <div class="memory-info">
+                        <h3>Dinner Date</h3>
+                        <p>That fancy restaurant where we celebrated</p>
+                    </div>
+                </div>
+                <div class="memory-card" data-memory="4">
+                    <div class="thumbnail">🎥</div>
+                    <div class="memory-info">
+                        <h3>Movie Night</h3>
+                        <p>Cuddling and watching our favorite film</p>
+                    </div>
+                </div>
+                <div class="memory-card" data-memory="5">
+                    <div class="thumbnail">📸</div>
+                    <div class="memory-info">
+                        <h3>Hunting jajan date</h3>
+                        <p>That night day with delicious food</p>
+                    </div>
+                </div>
+                <div class="memory-card" data-memory="7">
+                    <div class="thumbnail">🏊‍♀️</div>
+                    <div class="memory-info">
+                        <h3>Swimming Date</h3>
+                        <p>Remember when we went swimming together?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Video Section -->
+        <div class="section">
+            <div class="heart heart-1">❤</div>
+            <div class="heart heart-2">❤</div>
+            <h2>Special Birthday Video</h2>
+            <div class="video-section">
+                <video class="birthday-video" controls poster="/api/placeholder/800/450">
+                    <source src="https://cdn.jsdelivr.net/gh/cloudinary-playground/sample-videos/sea.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="margin-top: 15px; font-style: italic; color: #ff69b4;">
+                    A special video made just for you on your special day! ❤️
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="heart heart-1">❤</div>
+            <div class="heart heart-2">❤</div>
+            <h2>Birthday Wishes For You</h2>
+            <div class="wishes">
+                <div class="wish">
+                    <p>On your special day, I wish you all the happiness in the world. May your life be filled with joy, love, and success. Thank you for being the amazing person that you are. I'm so lucky to have you in my life.</p>
+                    <div class="wish-author">With Love ❤</div>
+                </div>
+                <div class="wish">
+                    <p>Happy Birthday to the most beautiful soul I know. You light up every room you enter, and my heart whenever I see you. May this year bring you everything you've ever dreamed of and more!</p>
+                    <div class="wish-author">Forever Yours ❤</div>
+                </div>
+                <div class="wish">
+                    <p>Today we celebrate you, Ulfa Damayanti! Your kindness, intelligence, and beauty inspire me every day. Thank you for being the wonderful person that you are. Here's to many more years of love and happiness together!</p>
+                    <div class="wish-author">Always and Forever ❤</div>
+                </div>
+            </div>
+            <button class="btn" id="message-btn">Click for a Special Message</button>
+        </div>
+    </div>
+
+    <div class="modal" id="memory-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img class="modal-image" src="/api/placeholder/600/400" alt="Memory Photo">
+            <div class="modal-text">This is where your memory description will appear.</div>
+        </div>
+    </div>
+
+    <div class="special-button" id="special-btn">❤</div>
+
+    <div class="surprise-container" id="surprise">
+        <span class="close-surprise">&times;</span>
+        <div class="surprise-text">I Love You, Ulfa Damayanti!</div>
+        <img src="/api/placeholder/400/300" alt="Special memory" style="border-radius: 10px; margin-bottom: 20px;">
+        <p style="text-align: center; max-width: 600px; margin: 0 auto;">
+            Thank you for bringing so much joy and love into my life. Every moment with you is a treasure. Happy Birthday, my love!
+        </p>
+    </div>
+
+    <footer>
+        Made with ❤ for Ulfa Damayanti | Happy Birthday 2025
+    </footer>
+
+    <script>
+        // Memory data - you would replace these with actual photos, videos and descriptions
+        const memories = {
+            1: {
+                type: "image",
+                src: "/api/placeholder/600/400",
+                description: "Our first date at that cozy café. You were wearing that beautiful dress and your smile lit up the room. This was the moment I knew you were special."
+            },
+            2: {
+                type: "image",
+                src: "/api/placeholder/600/400",
+                description: "Remember our beach trip? We walked along the shore for hours, talking about our dreams and future. The sunset that day was almost as beautiful as you."
+            },
+            3: {
+                type: "image",
+                src: "/api/placeholder/600/400",
+                description: "Our anniversary dinner at that fancy restaurant. The food was good, but your company was even better. We couldn't stop laughing all night."
+            },
+            4: {
+                type: "video",
+                src: "/api/placeholder/600/400",
+                description: "Movie night at home with blankets and popcorn. You fell asleep halfway through, but looked so peaceful I didn't want to wake you."
+            },
+            5: {
+                type: "image",
+                src: "/api/placeholder/600/400",
+                description: "Our picnic day at the park. We spent hours lying on the grass, watching clouds and telling each other stories. Simple days like these are the best with you."
+            },
+            6: {
+                type: "video",
+                src: "/api/placeholder/600/400",
+                description: "That night we danced under the stars at the rooftop party. You moved so gracefully, and everyone couldn't help but watch. I felt like the luckiest person in the world."
+            },
+            7: {
+                type: "image",
+                src: "/api/placeholder/600/400",
+                description: "Our swimming date at the pool. You looked so beautiful in your swimsuit, and I loved watching you swim. This was such a fun day!"
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById("memory-modal");
+        const memoryCards = document.querySelectorAll(".memory-card");
+        const closeModal = document.querySelector(".close-modal");
+        const modalImage = document.querySelector(".modal-image");
+        const modalText = document.querySelector(".modal-text");
+
+        memoryCards.forEach(card => {
+            card.addEventListener("click", function() {
+                const memoryId = this.getAttribute("data-memory");
+                const memory = memories[memoryId];
+                
+                modalImage.src = memory.src;
+                modalText.textContent = memory.description;
+                modal.style.display = "flex";
+                
+                // Create confetti effect when opening a memory
+                createConfetti();
+            });
+        });
+
+        closeModal.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Special message button
+        const messageBtn = document.getElementById("message-btn");
+        messageBtn.addEventListener("click", function() {
+            alert("Happy Birthday, Ulfa Damayanti! You mean the world to me. Thank you for all the wonderful memories we've shared. Here's to many more years of happiness together!");
+            createConfetti();
+        });
+
+        // Special button functionality
+        const specialBtn = document.getElementById("special-btn");
+        const surprise = document.getElementById("surprise");
+        const closeSuprise = document.querySelector(".close-surprise");
+
+        specialBtn.addEventListener("click", function() {
+            surprise.style.display = "flex";
+            createConfetti(100);
+            playBirthdayMusic(); // Auto-play music when surprise is shown
+        });
+
+        closeSuprise.addEventListener("click", function() {
+            surprise.style.display = "none";
+        });
+
+        // Birthday Music Control
+        const birthdayMusic = document.getElementById("birthday-music");
+        const playMusicBtn = document.getElementById("play-music");
+        const pauseMusicBtn = document.getElementById("pause-music");
+
+        playMusicBtn.addEventListener("click", function() {
+            playBirthdayMusic();
+        });
+
+        pauseMusicBtn.addEventListener("click", function() {
+            pauseBirthdayMusic();
+        });
+
+        function playBirthdayMusic() {
+            birthdayMusic.play();
+            playMusicBtn.style.display = "none";
+            pauseMusicBtn.style.display = "inline-flex";
+            createConfetti(20);
+        }
+
+        function pauseBirthdayMusic() {
+            birthdayMusic.pause();
+            pauseMusicBtn.style.display = "none";
+            playMusicBtn.style.display = "inline-flex";
+        }
+
+        // Confetti effect
+        function createConfetti(count = 30) {
+            for (let i = 0; i < count; i++) {
+                const confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.top = Math.random() * 100 + "vh";
+                confetti.style.backgroundColor = getRandomColor();
+                document.body.appendChild(confetti);
+                
+                // Animation
+                setTimeout(() => {
+                    confetti.style.opacity = 1;
+                    confetti.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 + 100}px) rotate(${Math.random() * 360}deg)`;
+                    confetti.style.transition = "all 1s ease";
+                    
+                    setTimeout(() => {
+                        confetti.style.opacity = 0;
+                        setTimeout(() => {
+                            document.body.removeChild(confetti);
+                        }, 1000);
+                    }, 1000);
+                }, Math.random() * 500);
+            }
+        }
+
+        function getRandomColor() {
+            const colors = [
+                "#ff1493", "#ff69b4", "#ffb6c1", "#ffc0cb", 
+                "#ff77ff", "#ff5a89", "#ff78a6", "#ffb7ce"
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Add hearts animation
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.innerText = "❤";
+            heart.style.position = "fixed";
+            heart.style.bottom = "-20px";
+            heart.style.fontSize = (Math.random() * 15 + 10) + "px";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.color = getRandomColor();
+            heart.style.zIndex = "1";
+            heart.style.opacity = Math.random() * 0.5 + 0.5;
+            heart.style.animation = `float ${Math.random() * 5 + 3}s linear forwards`;
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                document.body.removeChild(heart);
+            }, 8000);
+        }, 1000);
+
+        // Heart floating animation
+        document.head.insertAdjacentHTML("beforeend", `
+            <style>
+                @keyframes float {
+                    to {
+                        transform: translateY(-100vh) rotate(${Math.random() * 100}deg);
+                    }
+                }
+            </style>
+        `);
+    </script>
+</body>
+</html>
