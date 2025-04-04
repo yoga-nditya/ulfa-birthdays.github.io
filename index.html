@@ -32,6 +32,8 @@
             border-radius: 10px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden; /* For containing balloons */
+            min-height: 250px; /* Give enough space for balloons */
         }
 
         h1 {
@@ -39,21 +41,29 @@
             color: #ff1493;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 10px;
+            position: relative; /* To appear over balloons */
+            z-index: 5;
         }
 
         .subtitle {
             font-size: 1.5rem;
             color: #ff69b4;
             margin-bottom: 20px;
+            position: relative; /* To appear over balloons */
+            z-index: 5;
         }
 
+        /* Enhanced Balloon Styles */
         .balloon {
             position: absolute;
             width: 40px;
             height: 50px;
-            background-color: #ff69b4;
             border-radius: 50%;
-            animation: float 5s infinite ease-in-out;
+            animation-name: float-balloon;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            z-index: 1;
         }
 
         .balloon:before {
@@ -67,40 +77,98 @@
             transform: translateX(-50%);
         }
 
+        /* Balloon variants with different sizes, colors and movements */
         .balloon:nth-child(1) {
-            top: 20px;
+            bottom: 10px;
             left: 10%;
             background-color: #ff69b4;
+            width: 50px;
+            height: 60px;
             animation-delay: 0.5s;
         }
 
         .balloon:nth-child(2) {
-            top: 40px;
-            right: 10%;
+            bottom: 20px;
+            right: 15%;
             background-color: #ff1493;
+            width: 45px;
+            height: 55px;
             animation-delay: 1s;
         }
 
         .balloon:nth-child(3) {
-            top: 30px;
-            left: 20%;
+            bottom: 15px;
+            left: 30%;
             background-color: #ff78a6;
+            width: 55px;
+            height: 65px;
             animation-delay: 1.5s;
         }
 
         .balloon:nth-child(4) {
-            top: 50px;
-            right: 20%;
+            bottom: 5px;
+            right: 30%;
             background-color: #ff5a89;
+            width: 40px;
+            height: 50px;
             animation-delay: 2s;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
+        .balloon:nth-child(5) {
+            bottom: 20px;
+            left: 50%;
+            background-color: #ff96af;
+            width: 60px;
+            height: 70px;
+            animation-delay: 0.7s;
+        }
+
+        .balloon:nth-child(6) {
+            bottom: 15px;
+            right: 50%;
+            background-color: #ffb6c1;
+            width: 35px;
+            height: 45px;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes float-balloon {
+            0% {
+                transform: translateY(0) rotate(0deg);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-120px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Improved Floating Hearts */
+        .floating-heart {
+            position: fixed;
+            color: #ff1493;
+            font-size: 20px;
+            opacity: 0;
+            z-index: 100;
+            animation: float-heart 10s linear forwards;
+            text-shadow: 0 0 5px rgba(255, 20, 147, 0.3);
+        }
+
+        @keyframes float-heart {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(360deg);
             }
         }
 
@@ -199,7 +267,9 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-image: url('foto.jpg');
+            background-size: cover;
+            background-position: center;
             padding: 20px;
             border-radius: 10px;
             max-width: 80%;
@@ -223,12 +293,6 @@
             max-height: 70vh;
             display: block;
             margin: 0 auto;
-        }
-
-        .modal-text {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 1.1rem;
         }
 
         .wishes {
@@ -276,6 +340,53 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
+        /* Improved Music Button */
+        .music-btn {
+            position: relative;
+            background-color: #ff1493;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+            z-index: 10;
+        }
+
+        .music-btn:hover {
+            background-color: #ff69b4;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.5);
+        }
+
+        .music-btn:active {
+            transform: translateY(1px);
+        }
+
+        .music-icon {
+            font-size: 1.3rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
         .special-button {
             position: fixed;
             bottom: 20px;
@@ -321,18 +432,6 @@
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
         .close-surprise {
             position: absolute;
             top: 20px;
@@ -348,59 +447,7 @@
             font-size: 0.9rem;
         }
 
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff69b4;
-            border-radius: 50%;
-            opacity: 0;
-        }
-
-        /* Video section styles */
-        .video-section {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .birthday-video {
-            width: 100%;
-            max-width: 800px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .music-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-            gap: 10px;
-        }
-
-        .music-btn {
-            background-color: #ff1493;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .music-btn:hover {
-            background-color: #ff69b4;
-            transform: translateY(-2px);
-        }
-
-        .music-icon {
-            font-size: 1.2rem;
-        }
-
+        /* Responsive styles */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -414,37 +461,114 @@
             .modal-content {
                 max-width: 95%;
             }
-            .birthday-video {
-                max-width: 100%;
+            .balloon {
+                transform: scale(0.8);
             }
         }
+
+        .navbar {
+        background-color: #ff1493;
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px 20px;
+    }
+
+    .logo {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+    }
+
+    .nav-item {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-item.active {
+        background-color: white;
+        color: #ff1493;
+    }
+
+    .hamburger {
+        display: none;
+        cursor: pointer;
+    }
+
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease;
+        background-color: white;
+    }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Ulfa Birthday</div>
+            <ul class="nav-links">
+                <li><a href="#birthday-section" class="nav-item active">Birthday</a></li>
+                <li><a href="about.html" class="nav-item">About Me</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <header>
+            <!-- Added more balloons for better effect -->
             <div class="balloon"></div>
             <div class="balloon"></div>
             <div class="balloon"></div>
             <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            
             <h1>Happy Birthday Ulfa Damayanti!</h1>
             <p class="subtitle">Celebrating You Today and Always</p>
             
-            <!-- Music Player (Hidden) -->
-            <audio id="birthday-music" loop>
-                <source src="https://cdn.jsdelivr.net/gh/soundsfrombeyond/free-sounds/happy_birthday.mp3" type="audio/mpeg">
+            <!-- Audio Element with Birthday Song -->
+            <audio id="birthdayAudio">
+                <source src="happy-birthday-314197.mp3" type="audio/mp3">
+                <!-- This is a placeholder URL. Replace with actual Happy Birthday song URL -->
                 Your browser does not support the audio element.
             </audio>
             
-            <!-- Music Controls -->
-            <div class="music-controls">
-                <button class="music-btn" id="play-music">
-                    <span class="music-icon">🎵</span> Play Birthday Song
-                </button>
-                <button class="music-btn" id="pause-music" style="display: none;">
-                    <span class="music-icon">⏸️</span> Pause Music
-                </button>
-            </div>
+            <!-- Play Music Button -->
+            <button class="music-btn" id="playMusicBtn">
+                <span class="music-icon">🎵</span> Play Birthday Song
+            </button>
         </header>
 
         <div class="section">
@@ -454,56 +578,35 @@
             <p style="text-align: center; margin-bottom: 20px;">Click on any memory to view it in detail</p>
             <div class="gallery">
                 <div class="memory-card" data-memory="1">
-                    <div class="thumbnail">📸</div>
+                    <div class="thumbnail">🏢</div>
                     <div class="memory-info">
-                        <h3>First Date</h3>
-                        <p>Remember when we first met?</p>
+                        <h3>Mall Day</h3>
                     </div>
                 </div>
                 <div class="memory-card" data-memory="3">
-                    <div class="thumbnail">📸</div>
+                    <div class="thumbnail">🍴</div>
                     <div class="memory-info">
                         <h3>Dinner Date</h3>
-                        <p>That fancy restaurant where we celebrated</p>
                     </div>
                 </div>
                 <div class="memory-card" data-memory="4">
                     <div class="thumbnail">🎥</div>
                     <div class="memory-info">
                         <h3>Movie Night</h3>
-                        <p>Cuddling and watching our favorite film</p>
                     </div>
                 </div>
                 <div class="memory-card" data-memory="5">
                     <div class="thumbnail">📸</div>
                     <div class="memory-info">
                         <h3>Hunting jajan date</h3>
-                        <p>That night day with delicious food</p>
                     </div>
                 </div>
                 <div class="memory-card" data-memory="7">
                     <div class="thumbnail">🏊‍♀️</div>
                     <div class="memory-info">
                         <h3>Swimming Date</h3>
-                        <p>Remember when we went swimming together?</p>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- New Video Section -->
-        <div class="section">
-            <div class="heart heart-1">❤</div>
-            <div class="heart heart-2">❤</div>
-            <h2>Special Birthday Video</h2>
-            <div class="video-section">
-                <video class="birthday-video" controls poster="/api/placeholder/800/450">
-                    <source src="https://cdn.jsdelivr.net/gh/cloudinary-playground/sample-videos/sea.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="margin-top: 15px; font-style: italic; color: #ff69b4;">
-                    A special video made just for you on your special day! ❤️
-                </p>
             </div>
         </div>
 
@@ -521,7 +624,7 @@
                     <div class="wish-author">Forever Yours ❤</div>
                 </div>
                 <div class="wish">
-                    <p>Today we celebrate you, Ulfa Damayanti! Your kindness, intelligence, and beauty inspire me every day. Thank you for being the wonderful person that you are. Here's to many more years of love and happiness together!</p>
+                    <p>Today we celebrate you, My love! Your kindness, intelligence, and beauty inspire me every day. Thank you for being the wonderful person that you are. Here's to many more years of love and happiness together!</p>
                     <div class="wish-author">Always and Forever ❤</div>
                 </div>
             </div>
@@ -542,53 +645,43 @@
     <div class="surprise-container" id="surprise">
         <span class="close-surprise">&times;</span>
         <div class="surprise-text">I Love You, Ulfa Damayanti!</div>
-        <img src="/api/placeholder/400/300" alt="Special memory" style="border-radius: 10px; margin-bottom: 20px;">
+        <img src="ss kotak lope.jpeg" alt="Special memory" style="border-radius: 10px; margin-bottom: 20px; max-width: 80%;">
         <p style="text-align: center; max-width: 600px; margin: 0 auto;">
             Thank you for bringing so much joy and love into my life. Every moment with you is a treasure. Happy Birthday, my love!
         </p>
     </div>
 
     <footer>
-        Made with ❤ for Ulfa Damayanti | Happy Birthday 2025
+        Made with ❤ for My Beloved Queen | Happy Birthday 2025
     </footer>
 
     <script>
-        // Memory data - you would replace these with actual photos, videos and descriptions
+        // Memory data
         const memories = {
             1: {
                 type: "image",
-                src: "/api/placeholder/600/400",
-                description: "Our first date at that cozy café. You were wearing that beautiful dress and your smile lit up the room. This was the moment I knew you were special."
-            },
-            2: {
-                type: "image",
-                src: "/api/placeholder/600/400",
-                description: "Remember our beach trip? We walked along the shore for hours, talking about our dreams and future. The sunset that day was almost as beautiful as you."
+                src: "foto first date.jpeg",
+                description: "Our first date together. I knew from this moment that you were special."
             },
             3: {
                 type: "image",
-                src: "/api/placeholder/600/400",
-                description: "Our anniversary dinner at that fancy restaurant. The food was good, but your company was even better. We couldn't stop laughing all night."
+                src: "foto dinner.jpeg",
+                description: "Dinner date night. The food was amazing, but your company was even better."
             },
             4: {
-                type: "video",
-                src: "/api/placeholder/600/400",
-                description: "Movie night at home with blankets and popcorn. You fell asleep halfway through, but looked so peaceful I didn't want to wake you."
+                type: "image",
+                src: "foto nonton.jpeg",
+                description: "Movie night with you. I don't even remember the movie because I was too busy looking at you."
             },
             5: {
                 type: "image",
-                src: "/api/placeholder/600/400",
-                description: "Our picnic day at the park. We spent hours lying on the grass, watching clouds and telling each other stories. Simple days like these are the best with you."
-            },
-            6: {
-                type: "video",
-                src: "/api/placeholder/600/400",
-                description: "That night we danced under the stars at the rooftop party. You moved so gracefully, and everyone couldn't help but watch. I felt like the luckiest person in the world."
+                src: "foto car jajan.jpeg",
+                description: "Our snack hunting adventure. Finding the best street food together."
             },
             7: {
                 type: "image",
-                src: "/api/placeholder/600/400",
-                description: "Our swimming date at the pool. You looked so beautiful in your swimsuit, and I loved watching you swim. This was such a fun day!"
+                src: "foto berenang.jpeg",
+                description: "Swimming date. You looked so beautiful even when you were soaking wet."
             }
         };
 
@@ -608,8 +701,8 @@
                 modalText.textContent = memory.description;
                 modal.style.display = "flex";
                 
-                // Create confetti effect when opening a memory
-                createConfetti();
+                // Create hearts when opening a memory
+                createFloatingHearts(20);
             });
         });
 
@@ -627,7 +720,7 @@
         const messageBtn = document.getElementById("message-btn");
         messageBtn.addEventListener("click", function() {
             alert("Happy Birthday, Ulfa Damayanti! You mean the world to me. Thank you for all the wonderful memories we've shared. Here's to many more years of happiness together!");
-            createConfetti();
+            createFloatingHearts(30);
         });
 
         // Special button functionality
@@ -637,8 +730,8 @@
 
         specialBtn.addEventListener("click", function() {
             surprise.style.display = "flex";
-            createConfetti(100);
-            playBirthdayMusic(); // Auto-play music when surprise is shown
+            createFloatingHearts(50);
+            playBirthdayMusic();
         });
 
         closeSuprise.addEventListener("click", function() {
@@ -646,94 +739,86 @@
         });
 
         // Birthday Music Control
-        const birthdayMusic = document.getElementById("birthday-music");
-        const playMusicBtn = document.getElementById("play-music");
-        const pauseMusicBtn = document.getElementById("pause-music");
+        const birthdayAudio = document.getElementById("birthdayAudio");
+        const playMusicBtn = document.getElementById("playMusicBtn");
+        
+        // Flag to track if music is playing
+        let isMusicPlaying = false;
 
         playMusicBtn.addEventListener("click", function() {
-            playBirthdayMusic();
-        });
-
-        pauseMusicBtn.addEventListener("click", function() {
-            pauseBirthdayMusic();
+            if (isMusicPlaying) {
+                pauseBirthdayMusic();
+            } else {
+                playBirthdayMusic();
+            }
         });
 
         function playBirthdayMusic() {
-            birthdayMusic.play();
-            playMusicBtn.style.display = "none";
-            pauseMusicBtn.style.display = "inline-flex";
-            createConfetti(20);
+            birthdayAudio.play();
+            isMusicPlaying = true;
+            playMusicBtn.innerHTML = '<span class="music-icon">⏸️</span> Pause Music';
+            createFloatingHearts(20);
         }
 
         function pauseBirthdayMusic() {
-            birthdayMusic.pause();
-            pauseMusicBtn.style.display = "none";
-            playMusicBtn.style.display = "inline-flex";
+            birthdayAudio.pause();
+            isMusicPlaying = false;
+            playMusicBtn.innerHTML = '<span class="music-icon">🎵</span> Play Birthday Song';
         }
 
-        // Confetti effect
-        function createConfetti(count = 30) {
+        // Create floating hearts
+        function createFloatingHearts(count = 15) {
             for (let i = 0; i < count; i++) {
-                const confetti = document.createElement("div");
-                confetti.classList.add("confetti");
-                confetti.style.left = Math.random() * 100 + "vw";
-                confetti.style.top = Math.random() * 100 + "vh";
-                confetti.style.backgroundColor = getRandomColor();
-                document.body.appendChild(confetti);
-                
-                // Animation
                 setTimeout(() => {
-                    confetti.style.opacity = 1;
-                    confetti.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 + 100}px) rotate(${Math.random() * 360}deg)`;
-                    confetti.style.transition = "all 1s ease";
+                    const heart = document.createElement("div");
+                    heart.innerHTML = "❤";
+                    heart.classList.add("floating-heart");
                     
+                    // Random position, size and rotation
+                    const size = Math.floor(Math.random() * 20) + 15; // 15-35px size
+                    heart.style.fontSize = `${size}px`;
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.bottom = "0";
+                    
+                    // Random animation duration and delay
+                    const duration = Math.random() * 5 + 5; // 5-10s
+                    heart.style.animationDuration = `${duration}s`;
+                    
+                    // Random color variations of pink/red
+                    const hue = Math.floor(Math.random() * 30) + 330; // 330-360 (red) or 0-30 (pink/red)
+                    const saturation = Math.floor(Math.random() * 20) + 80; // 80-100%
+                    const lightness = Math.floor(Math.random() * 20) + 50; // 50-70%
+                    heart.style.color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+                    
+                    document.body.appendChild(heart);
+                    
+                    // Remove heart from DOM after animation completes
                     setTimeout(() => {
-                        confetti.style.opacity = 0;
-                        setTimeout(() => {
-                            document.body.removeChild(confetti);
-                        }, 1000);
-                    }, 1000);
-                }, Math.random() * 500);
+                        document.body.removeChild(heart);
+                    }, duration * 1000);
+                }, i * 100); // Stagger creation for more natural effect
             }
         }
 
-        function getRandomColor() {
-            const colors = [
-                "#ff1493", "#ff69b4", "#ffb6c1", "#ffc0cb", 
-                "#ff77ff", "#ff5a89", "#ff78a6", "#ffb7ce"
-            ];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
-
-        // Add hearts animation
+        // Create hearts periodically
         setInterval(() => {
-            const heart = document.createElement("div");
-            heart.innerText = "❤";
-            heart.style.position = "fixed";
-            heart.style.bottom = "-20px";
-            heart.style.fontSize = (Math.random() * 15 + 10) + "px";
-            heart.style.left = Math.random() * window.innerWidth + "px";
-            heart.style.color = getRandomColor();
-            heart.style.zIndex = "1";
-            heart.style.opacity = Math.random() * 0.5 + 0.5;
-            heart.style.animation = `float ${Math.random() * 5 + 3}s linear forwards`;
-            document.body.appendChild(heart);
-            
-            setTimeout(() => {
-                document.body.removeChild(heart);
-            }, 8000);
-        }, 1000);
+            createFloatingHearts(3);
+        }, 3000);
 
-        // Heart floating animation
-        document.head.insertAdjacentHTML("beforeend", `
-            <style>
-                @keyframes float {
-                    to {
-                        transform: translateY(-100vh) rotate(${Math.random() * 100}deg);
-                    }
-                }
-            </style>
-        `);
+        // Initial heart creation on page load
+        window.addEventListener('load', function() {
+            createFloatingHearts(10);
+            
+            // Add wobble effect to balloons on hover
+            const balloons = document.querySelectorAll('.balloon');
+            balloons.forEach(balloon => {
+                balloon.addEventListener('mouseenter', function() {
+                    this.style.animation = 'none';
+                    this.offsetHeight; // Trigger reflow
+                    this.style.animation = 'float-balloon 3s ease-in-out infinite';
+                });
+            });
+        });
     </script>
 </body>
 </html>
