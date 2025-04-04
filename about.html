@@ -40,35 +40,35 @@
         </div>
     </div>
     
-    <div class="favorites-section">
-        <h3>A Few of Her Favorite Things</h3>
-        <div class="favorites-grid">
-            <div class="favorite-item">
-                <div class="favorite-icon">🍦</div>
-                <div class="favorite-label">Ice Cream</div>
-            </div>
-            <div class="favorite-item">
-                <div class="favorite-icon">🎬</div>
-                <div class="favorite-label">Movies</div>
-            </div>
-            <div class="favorite-item">
-                <div class="favorite-icon">🏊‍♀️</div>
-                <div class="favorite-label">Swimming</div>
-            </div>
-            <div class="favorite-item">
-    <div class="favorite-icon">🍴</div>
-    <div class="favorite-label">Eat</div>
-</div>
-<div class="favorite-item">
-    <div class="favorite-icon">🎤</div>
-    <div class="favorite-label">K-Pop</div>
-</div>
-            <div class="favorite-item">
-                <div class="favorite-icon">🌺</div>
-                <div class="favorite-label">Flowers</div>
-            </div>
+<div class="favorites-section">
+    <h3>A Few of Her Favorite Things</h3>
+    <div class="favorites-grid">
+        <div class="favorite-item">
+            <div class="favorite-icon">🍦</div>
+            <div class="favorite-label">Ice Cream</div>
+        </div>
+        <div class="favorite-item">
+            <div class="favorite-icon">🎬</div>
+            <div class="favorite-label">Movies</div>
+        </div>
+        <div class="favorite-item">
+            <div class="favorite-icon">🏊‍♀️</div>
+            <div class="favorite-label">Swimming</div>
+        </div>
+        <div class="favorite-item">
+            <div class="favorite-icon">🍴</div>
+            <div class="favorite-label">Eat</div>
+        </div>
+        <div class="favorite-item">
+            <div class="favorite-icon">🎤</div>
+            <div class="favorite-label">K-Pop</div>
+        </div>
+        <div class="favorite-item">
+            <div class="favorite-icon">🌺</div>
+            <div class="favorite-label">Flowers</div>
         </div>
     </div>
+</div>
     
     <div class="quote-section">
         <blockquote>"Ulfa isn't just beautiful on the outside. Her kindness, intelligence, and warm heart make her truly the most amazing person I've ever known."</blockquote>
@@ -196,14 +196,14 @@
     .favorite-item {
         text-align: center;
         padding: 15px;
-        background-color: #fff5f8;
+        background-color: white;
         border-radius: 10px;
         transition: all 0.3s ease;
     }
 
     .favorite-item:hover {
         transform: scale(1.05);
-        background-color: #ffb6c1;
+        background-color: white;
     }
 
     .favorite-icon {
@@ -282,6 +282,22 @@
             grid-template-columns: repeat(3, 1fr);
         }
     }
+
+    @media (max-width: 768px) {
+    .favorites-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .favorite-item {
+        padding: 10px;
+    }
+    .favorite-icon {
+        font-size: 1.5rem;
+    }
+    .favorite-label {
+        font-size: 0.8rem;
+    }
+}
 </style>
 
 <!-- Add this to your existing JavaScript at the bottom of the page -->
